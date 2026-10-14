@@ -1,0 +1,16 @@
+From:     Valid, Frozen, Missing
+To:       Valid, Missing, SameAsFrom
+Amount:   Normal, Zero, OverBalance, OverLimit
+Currency: Same, Different
+
+# A2-ийн single-error хязгаарлалтууд (R1-R3):
+# from алдаатай бол to, amount хүчинтэй байх
+IF [From] = "Frozen" THEN [To] = "Valid" AND [Amount] = "Normal";
+IF [From] = "Missing" THEN [To] = "Valid" AND [Amount] = "Normal";
+# to алдаатай бол from, amount хүчинтэй байх
+IF [To] = "Missing" THEN [From] = "Valid" AND [Amount] = "Normal";
+IF [To] = "SameAsFrom" THEN [From] = "Valid" AND [Amount] = "Normal";
+# amount алдаатай бол from, to хүчинтэй байх
+IF [Amount] = "Zero" THEN [From] = "Valid" AND [To] = "Valid";
+IF [Amount] = "OverBalance" THEN [From] = "Valid" AND [To] = "Valid";
+IF [Amount] = "OverLimit" THEN [From] = "Valid" AND [To] = "Valid";

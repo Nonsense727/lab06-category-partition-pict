@@ -1,0 +1,13 @@
+From:     Valid, ~Frozen, ~Missing
+To:       Valid, ~Missing, ~SameAsFrom
+Amount:   Normal, ~Zero, ~OverBalance, ~OverLimit
+Currency: Same, Different
+
+# A2-ийн хязгаарлалт хэвээр хадгалагдсан (~ -тэй ч гэсэн):
+IF [From] = "Frozen" THEN [To] = "Valid" AND [Amount] = "Normal";
+IF [From] = "Missing" THEN [To] = "Valid" AND [Amount] = "Normal";
+IF [To] = "Missing" THEN [From] = "Valid" AND [Amount] = "Normal";
+IF [To] = "SameAsFrom" THEN [From] = "Valid" AND [Amount] = "Normal";
+IF [Amount] = "Zero" THEN [From] = "Valid" AND [To] = "Valid";
+IF [Amount] = "OverBalance" THEN [From] = "Valid" AND [To] = "Valid";
+IF [Amount] = "OverLimit" THEN [From] = "Valid" AND [To] = "Valid";
